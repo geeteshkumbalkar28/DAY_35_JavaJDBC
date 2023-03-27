@@ -26,12 +26,10 @@ public class EmpWageJDBC {
 		final String userName = "root";
 		final String password = "babayaga@12345";
 		Connection connection = DriverManager.getConnection(url,userName,password);
-		
-Statement statement = connection.createStatement();
-		
+		Statement statement = connection.createStatement();
 		//total and average netpay of female
 		String queryOne = "select avg(NetPay) as Average_pay, sum(NetPay) as Total_pay from employee_payroll where Gender = 'F' group by Gender; ";
-		
+
 		ResultSet resultSetOne = statement.executeQuery(queryOne);
 		while(resultSetOne.next()) {
 			int Average_pay = resultSetOne.getInt("Average_pay");
@@ -40,7 +38,7 @@ Statement statement = connection.createStatement();
 			System.out.println("Average_pay :: " + Average_pay + '\n'+
 					" Total_pay :: " + Total_pay);
 		}
-		
+
 		//total and average netpay of males
 		String queryTwo = "select avg(NetPay) as Average_pay, sum(NetPay) as Total_pay from employee_payroll where Gender = 'M' group by Gender; ";
 
@@ -52,7 +50,7 @@ Statement statement = connection.createStatement();
 			System.out.println("Average_pay :: " + Average_pay + '\n'+
 					" Total_pay :: " + Total_pay);
 		}
-		
+
 		//minimum
 		String queryThree = "select * from employee_payroll where NetPay = (select min(NetPay) as minimum_pay from employee_payroll); ";
 
@@ -70,18 +68,18 @@ Statement statement = connection.createStatement();
 			int deductions = resultSetThree.getInt("Deductions");
 			int taxAblePay = resultSetThree.getInt("TaxablePay");
 			int tax = resultSetThree.getInt("Tax");
-			
+
 			System.out.println('\n'+" Minimum salary :: ");
 			System.out.println("employeeID=" + ", employeeName=" + employeeName
-				+ ", netPay=" + netPay + ", startDate=" + startDate + ", city=" + city + ", country=" + country
-				+ ", address=" + address + ", department=" + department + ", basicPay="
-				+ basicPay + ", deductions=" + deductions + ", taxAblePay=" + taxAblePay + ", tax=" + tax);
-			
+					+ ", netPay=" + netPay + ", startDate=" + startDate + ", city=" + city + ", country=" + country
+					+ ", address=" + address + ", department=" + department + ", basicPay="
+					+ basicPay + ", deductions=" + deductions + ", taxAblePay=" + taxAblePay + ", tax=" + tax);
+
 		}
-		
+
 		//maximum
 		String queryFour = "select * from employee_payroll where NetPay = (select max(NetPay) as minimum_pay from employee_payroll);";
-	
+
 		ResultSet resultSetFour = statement.executeQuery(queryFour);
 		while(resultSetFour.next()) {
 			String employeeName = resultSetFour.getString("EmployeeName");
@@ -95,18 +93,18 @@ Statement statement = connection.createStatement();
 			int deductions = resultSetFour.getInt("Deductions");
 			int taxAblePay = resultSetFour.getInt("TaxablePay");
 			int tax = resultSetFour.getInt("Tax");
-			
+
 			System.out.println('\n'+" Maximum salary :: ");
 			System.out.println("employeeID=" + ", employeeName=" + employeeName
-				+ ", netPay=" + netPay + ", startDate=" + startDate + ", city=" + city + ", country=" + country
-				+ ", address=" + address + ", department=" + department + ", basicPay="
-				+ basicPay + ", deductions=" + deductions + ", taxAblePay=" + taxAblePay + ", tax=" + tax);
-			
+					+ ", netPay=" + netPay + ", startDate=" + startDate + ", city=" + city + ", country=" + country
+					+ ", address=" + address + ", department=" + department + ", basicPay="
+					+ basicPay + ", deductions=" + deductions + ", taxAblePay=" + taxAblePay + ", tax=" + tax);
+
 		}
-		
+
 		//count
 		String queryFive = "select count(EmployeeID) as Total_Employees from employee_payroll; ";
-		
+
 		ResultSet resultSetFive = statement.executeQuery(queryFive);
 		while(resultSetFive.next()) {
 			int Total_Employees = resultSetFive.getInt("Total_Employees");
@@ -114,12 +112,15 @@ Statement statement = connection.createStatement();
 			System.out.println(" Total_Employees :: " + Total_Employees);
 		}
 
-		
+
 		statement.close();
 		connection.close();
-		
+
 
 	}
 
-	}
+
+
+}
+
 
