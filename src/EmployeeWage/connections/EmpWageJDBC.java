@@ -40,6 +40,5 @@ public class EmpWageJDBC {
 		statement.close();
 		connection.close();
 
-
 	}
 }
