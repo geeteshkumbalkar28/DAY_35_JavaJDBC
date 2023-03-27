@@ -7,11 +7,6 @@ import java.util.Scanner;
 import EmployeeWage.model.EmployeeWagePojo;
 
 
-
-
-
-
-
 public class EmployeeWageMain 
 {
 private static Scanner userInput = new Scanner(System.in);
@@ -22,10 +17,15 @@ private static Scanner userInput = new Scanner(System.in);
 		System.out.println("Enter Employee Name");
 		employeePojo.setEmployeeName(userInput.next());
 		
+//		System.out.println("Enter gender");
+//		employeePojo.setGender(userInput.next().charAt(0));
 		
 		System.out.println("Enter netPay");
 		employeePojo.setNetPay(userInput.nextInt());
-
+//		
+//		System.out.println("Enter startDate");
+//		employeePojo.setStartDate(userInput.next());
+//		
 //		System.out.println("Enter city");
 //		employeePojo.setCity(userInput.next());
 //		
